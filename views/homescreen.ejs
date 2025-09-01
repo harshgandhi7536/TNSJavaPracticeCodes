@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            display: flex;
+            flex-direction: horizontal;
+        }
+
+          tb,th, td{
+            border: 1px solid black;
+        }
+
+        table {
+            width: 100%;       /* Table takes full width of parent (black box) */
+            border-collapse: collapse;  /* Remove gaps between borders */
+            text-align: left;  /* Keep text aligned neatly */
+            }
+
+td, th {
+  padding:0px;      /* Add some spacing inside cells */
+}
+
+        .mainbox{
+            margin-left: 0px;
+            height: 37rem;
+            width: 68rem;
+            background-color: rgb(49, 46, 46);
+          
+        }
+        .sidebox{
+            height: 35.5rem;
+            width: 30rem;
+            background-color: rgb(99, 76, 76);
+        }
+        .bottombox{
+            height: 10rem;
+            width: 86.25em;
+            background-color: rgb(0, 0, 0);
+        }
+
+        th, td {
+               /* Increase cell spacing (height grows automatically) */
+                    font-size: 18px;      /* Increase text size */
+        }
+        #label1{
+            font-size: 22px;
+            color: aliceblue;
+            }
+         #sname{
+            color: white;
+         }
+            
+            .bottombox{
+           
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: row;
+        }
+
+    .smallerimg{
+            padding-left: 11px;
+            padding-top: 11px;
+            height: 24px;
+            width: 222px;
+            object-fit: cover;
+        }
+
+        .smallerimg img {
+   height: 48px;
+   width: 48px;
+   object-fit: cover;
+   display: block;
+}
+
+        .controllerbox{
+            margin-left: 20rem;
+            display: flex;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        button{
+            padding: 0.4rem;
+            margin: 1rem;
+            height: 2rem;
+            width: 2rem;
+        }
+        button img {
+            width: 24px;   /* or 32px if you want bigger */
+            height: 24px;
+            object-fit: contain;  /* keeps proportions */
+        }
+        
+        .box1{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .timeline {
+            width: 80%;
+            height: 6px;
+            background: rgb(90, 84, 84);
+            border-radius: 5px;
+            margin: 20px auto;
+            position: relative;
+            }
+
+            .progress {
+            width: 30%; 
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            }
+
+            .dot {
+            width: 14px;
+            height: 14px;
+            background: #000000;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 30%;          /* matches progress */
+            transform: translate(-50%, -50%);
+            }
+
+            label{
+                color: white;
+            }
+
+            .box2{
+                display: flex;
+                flex-direction: row;
+            }
+
+            .repMin{
+                height: 30px;
+                width:30px;
+                 object-fit: cover;
+                 margin-top: 70px;
+            }
+
+            .volume{
+                height: 30px;
+                width:66px;
+                object-fit: cover;
+                margin-top: 70px;
+                margin-left: 25px;
+                margin-right: 25px;
+            }
+
+            .rightside{
+                display: flex;
+                flex-direction: row;
+                padding-left: 275px;
+
+            }
+
+            .sidebox{
+            padding-top: 22px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .one{
+             padding-left: 225px;
+
+            }
+
+            .two{
+                padding: 50px;
+               
+                display: flex;
+                flex-direction: row;
+            } 
+           
+            .three{
+                padding-left: 39px;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="box1">
+        <div class="mainbox">
+            <div id="label1">
+                All songs
+            </div>1
+            <table >
+            <tr>
+                <th>Song Name</th>
+                <th>Minutes</th>
+                <th>Movie</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Play Now</th>
+            </tr>
+             <% for (song of songs){ %>
+             <tr>
+                <td label="sname"><%= song.songname%></td>
+                <td><%= song.totalminutes %></td>
+                <td><%= song.moviename %></td>
+                <td><%= song.artist %></td>
+                <td><%= song.releasedin %></td>
+                
+
+                <td>
+                <form  method="GET" action="/song/<%= song.id%>/musicplayer">
+                    <button> Play</button>
+                </form>
+                </td>             
+            </tr>
+        <% } %>
+
+          
+    </table>
+
+
+        </div>
+        <div class="sidebox">
+            <div class="one"></div>    
+            <div>Your Library</div>
+            <div class="two">
+                <label>Your Favourites</label>
+                <div class="three">Recently Played</div>
+            </div>
+        </div>
+    </div>
+    <div class="bottombox">
+   <div class="smallerimg">
+             <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgJ9fe3aXSMmzafaeuc1C_4hDz9t5wjBDdhQ&s>" alt="Image" >
+             <label ><b>India Wale</b></label>
+
+    </div>
+
+            <div class="controllerbox">
+            
+            <div class="box1">
+            <button >
+                    <img src="/images/prev.webp" alt="Logo">
+            </button>
+             <button>
+                    <img src="/images/play.png" alt="Logo">
+             </button>   
+            <button>
+                    <img src="/images/next.png" alt="Logo">
+                </button>
+            </div>
+          
+          <div class="box2">
+            <label >1:27</label>
+            <div class="timeline">
+                <div class="progress"></div>
+                <div class="dot"></div>
+            </div>
+            <label ><%= song.totalminutes%></label>
+          </div>
+
+        
+        </div>
+
+        <div class="rightside">
+            <img  class="repMin" src="/images/repeat.webp" alt="rep">
+            <img  class="volume" src="/images/volume.webp" alt="Vol">
+            <img class="repMin"  src="/images/minplayer.png" alt="miniPl">
+        </div>
+    
+    </div>
+</body>
+</html>
