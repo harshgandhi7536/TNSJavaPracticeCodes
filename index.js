@@ -26,7 +26,7 @@ const connection=mysql.createConnection({
 try{
     connection.query("SELECT * FROM data", (err,result)=>{
         if (err) throw err;
-        console.log(result); 
+     ///   console.log(result); 
     })
 }
 catch(err){
@@ -100,3 +100,6 @@ app.get("/song/:id/musicplayer", (req,res)=>{
    
   
 })
+
+
+//                     <img src="/images/play.png" alt="Logo">

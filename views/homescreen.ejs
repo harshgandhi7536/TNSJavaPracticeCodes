@@ -28,7 +28,7 @@ td, th {
             margin-left: 0px;
             height: 37rem;
             width: 68rem;
-            background-color: rgb(49, 46, 46);
+            background-color: rgb(154, 136, 136);
           
         }
         .sidebox{
@@ -42,10 +42,17 @@ td, th {
             background-color: rgb(0, 0, 0);
         }
 
+       
         th, td {
                /* Increase cell spacing (height grows automatically) */
                     font-size: 18px;      /* Increase text size */
         }
+        .highlight {
+         background-color: yellow;
+         font-weight: bold;
+         border: 2px solid red;
+        }
+        
         #label1{
             font-size: 22px;
             color: aliceblue;
@@ -70,11 +77,11 @@ td, th {
         }
 
         .smallerimg img {
-   height: 48px;
-   width: 48px;
-   object-fit: cover;
-   display: block;
-}
+        height: 48px;
+        width: 48px;
+        object-fit: cover;
+        display: block;
+        }
 
         .controllerbox{
             margin-left: 20rem;
@@ -84,8 +91,7 @@ td, th {
             flex-direction: column;
         }
 
-        button{
-            padding: 0.4rem;
+            button{
             margin: 1rem;
             height: 2rem;
             width: 2rem;
@@ -181,6 +187,24 @@ td, th {
             .three{
                 padding-left: 39px;
             }
+        
+            #playBtn {
+            font-size: 25px;  
+            height: 30px;
+            width: 30px;
+            }
+           #sideboxindivs{
+                padding-right: 55px;
+                background-color: rgba(255, 238, 238, 0.1);
+                 box-shadow: 1px 6px rgba(255, 238, 238, 0.1);
+                transition: transform 1s, box-shadow 2s;
+                margin-left: 15px;
+            }
+
+            .recently-played{
+                margin-left: 5px;
+                padding-left:10px;
+            }
     </style>
 
 </head>
@@ -189,7 +213,7 @@ td, th {
         <div class="mainbox">
             <div id="label1">
                 All songs
-            </div>1
+            </div>
             <table >
             <tr>
                 <th>Song Name</th>
@@ -210,7 +234,7 @@ td, th {
 
                 <td>
                 <form  method="GET" action="/song/<%= song.id%>/musicplayer">
-                    <button> Play</button>
+                    <button class="listbtton"> Play</button>
                 </form>
                 </td>             
             </tr>
@@ -222,12 +246,35 @@ td, th {
 
         </div>
         <div class="sidebox">
-            <div class="one"></div>    
-            <div>Your Library</div>
-            <div class="two">
-                <label>Your Favourites</label>
-                <div class="three">Recently Played</div>
-            </div>
+           <div class="library">
+  <h2>Your Library</h2>
+<div class="box2">
+  <div id="sideboxindivs" class="favourites">
+    <h3>Your Favourites</h3>
+    <ul>
+      <li>Kesariya </li>
+      <li>Ganesha </li>
+    </ul>
+  </div>
+
+  <div id="sideboxindivs" class="recently-played">
+    <h3>Recently Played</h3>
+    <ul>
+      <li>India Wale</li>
+      <li>Born to Shine</li>
+    </ul>
+  </div>
+</div>
+  <div id="sideboxindivs" class="playlists">
+    <h3>Playlists</h3>
+    <ul>
+        
+      <li>Workout Mix </li>
+      <li>Chill Vibes</li>
+    </ul>
+  </div>
+</div>
+
         </div>
     </div>
     <div class="bottombox">
@@ -238,13 +285,13 @@ td, th {
     </div>
 
             <div class="controllerbox">
-            
+            <audio  id="myaudio" src="/music/India Waale.mp3"></audio>
             <div class="box1">
             <button >
                     <img src="/images/prev.webp" alt="Logo">
             </button>
-             <button>
-                    <img src="/images/play.png" alt="Logo">
+             <button id="playBtn" label="Play">
+                
              </button>   
             <button>
                     <img src="/images/next.png" alt="Logo">
@@ -270,5 +317,22 @@ td, th {
         </div>
     
     </div>
+
+    <script>
+        const audio=document.getElementById("myaudio");
+
+        document.getElementById("playBtn").addEventListener("click",()=>{
+           /// console.log(" In audio button"); 
+           ///  audio.play();
+             if (audio.paused) {
+                    audio.play();
+                    playBtn.textContent = "⏸"; // change button label
+          } else {
+                     audio.pause();
+                     playBtn.textContent = "▶"; // change button back
+        }
+        });
+
+    </script>
 </body>
 </html>

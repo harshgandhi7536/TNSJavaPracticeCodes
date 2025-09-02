@@ -170,19 +170,20 @@
             
         <div class="smallerimg">
              <img src= "<%=song.imageurl %>" alt="Image" >
-             <label ><b><%= song.songname[5] %></b></label>
+             <label ><b><%= song.songname %></b></label>
 
         </div>
            
 
         <div class="controllerbox">
-            
+            <audio  id="myaudio" src="/music/<%= song.songname%>.mp3"></audio>
+
             <div class="box1">
             <button >
                     <img src="/images/prev.webp" alt="Logo">
             </button>
-             <button>
-                    <img src="/images/play.png" alt="Logo">
+             
+            <button id="playBtn" label="Play">
              </button>   
             <button>
                     <img src="/images/next.png" alt="Logo">
@@ -206,5 +207,22 @@
         </div>
 
     </div>
+
+    <script>
+        const audio=document.getElementById("myaudio");
+
+        document.getElementById("playBtn").addEventListener("click",()=>{
+           /// console.log(" In audio button"); 
+           ///  audio.play();
+             if (audio.paused) {
+                    audio.play();
+                    playBtn.textContent = "⏸"; // change button label
+          } else {
+                     audio.pause();
+                     playBtn.textContent = "▶"; // change button back
+        }
+        });
+
+    </script>
 </body>
 </html>
